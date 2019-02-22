@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.less";
 import { hot } from "react-hot-loader";
-import { TextInput, Button } from 'grommet';
+import { TextInput, Button, Anchor } from 'grommet';
 import { Route } from 'react-router-dom';
 
 class Login extends Component {
@@ -18,7 +18,7 @@ class Login extends Component {
             <div className="login-container">
 
                 <div className="logo-container">
-                    <h1>INVESTO</h1>
+                    <i className="fa fa-paper-plane fa-4x"></i>
                 </div>
                 <TextInput
                     placeholder="USERNAME"
@@ -39,6 +39,8 @@ class Login extends Component {
                     />
                         
                 )} />
+                
+                <Anchor href="#" primary label="Forgot something?" />
             </div>
         );
     }
