@@ -20,16 +20,18 @@ class Login extends Component {
                 <div className="logo-container">
                     <i className="fa fa-paper-plane fa-4x"></i>
                 </div>
+                <form>
                 <TextInput
                     placeholder="USERNAME"
                     onChange={(event) => { this.setState({ username: event.target.value})}}
-                />
+                    />
                 
                 <TextInput
                     placeholder="PASSWORD"
                     type="password"
                     onChange={(event) => { this.setState({ username: event.target.value})}}
-                />
+                    />
+                </form>
 
                 <Route render={({ history }) => (
                     <Button

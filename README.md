@@ -1,6 +1,6 @@
-# React Scratch
+# Investment App Concept
 
-This is a basic react boilerplate with minimal package installations. The project includes hot-reload and LESS. 
+A concept app for a fintech investment service. Built off a my own (react boilerplate)[https://github.com/andthomas/react-scratch] and using react router and Grommet UI.
 
 To get started:
 
