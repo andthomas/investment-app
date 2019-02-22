@@ -1,6 +1,6 @@
 # Investment App Concept
 
-A concept app for a fintech investment service. Built off a my own (react boilerplate)[https://github.com/andthomas/react-scratch] and using react router and Grommet UI.
+A concept app for a fintech investment service. Built off a my own [react boilerplate](https://github.com/andthomas/react-scratch) and using react router and Grommet UI.
 
 To get started:
 
