@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Home.less";
 import { hot } from "react-hot-loader";
 import { Tabs, Tab, Box } from "grommet";
+import Portfolio from "../components/Portfolio.js";
+import Invest from "../components/Invest.js";
+import News from "../components/News.js";
 
 class Home extends Component {
     render() {
@@ -11,8 +14,8 @@ class Home extends Component {
                     <i className="fa fa-cog fa-2x"></i>
                 </div>
 
-                {/* <Profile />
-                <Invest />
+                <Portfolio />
+                {/* <Invest />
                 <News /> */}
 
                 <div className="bottom-navbar">
