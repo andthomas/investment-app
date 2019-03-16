@@ -6,9 +6,9 @@ At this point in time, I have built the login screen and am working on the dashb
 
 Login: 
 
-[Login Screen](https://imgur.com/IGC9SOL)
+![Login Screen](https://imgur.com/IGC9SOL)
 
-[Dashboard (Incomplete)](https://imgur.com/g9tsCno)
+![Dashboard (Incomplete)](https://imgur.com/g9tsCno)
 
 To get started:
 
