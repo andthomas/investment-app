@@ -2,6 +2,14 @@
 
 A concept progressive web app for a fintech investment service. Built off a my own [react boilerplate](https://github.com/andthomas/react-scratch) and using react router and Grommet UI.
 
+At this point in time, I have built the login screen and am working on the dashboard:
+
+Login: 
+
+[Login Screen](https://imgur.com/IGC9SOL)
+
+[Dashboard (Incomplete)](https://imgur.com/g9tsCno)
+
 To get started:
 
 1. Clone or download the repo.

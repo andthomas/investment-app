@@ -15,7 +15,7 @@ class Home extends Component {
                     <Route render={({ history }) => (
                         <Button
                             className="logout-button"
-                            icon={<i className=" fa fa-angle-left fa-2x"></i>}
+                            icon={<i className=" fa fa-cog fa-2x"></i>}
                             type='button'
                             onClick={() => { history.push('/login') }}
                         />
