@@ -1,9 +1,58 @@
 import React, { Component } from "react";
 import "./Portfolio.less";
 import { hot } from "react-hot-loader";
-import { Meter, Chart } from "grommet";
+import { Meter } from "grommet";
+import Chart from "chart.js";
 
 class Portfolio extends Component {
+    componentDidMount() {
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: ["3 Mar", "4 Mar", "5 Mar", "6 Mar", "7 Mar", "8 Mar", "9 Mar"],
+                datasets: [{
+                    data: [6023, 6035, 6086, 6079, 6044, 6078, 6103],
+                    borderColor: "#fff",
+                    fill: false
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    enabled: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 3,
+                            fontColor: "#fff",
+                            userCallback: function (value, index, values) {
+                                value = value.toString();
+                                value = value.split(/(?=(?:...)*$)/);
+                                value = value.join(',');
+                                return value;
+                            }
+                        },
+                        gridLines: {
+                            display: false,
+                            color: "#FFFFFF"
+                        },
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "#fff",
+                        },
+                        gridLines: {
+                            display: false,
+                            color: "#FFFFFF"
+                        },
+                    }]
+                }
+            }
+        });
+    }
     render() {
         return (
             <div className="portfolio-container">
@@ -29,22 +78,7 @@ class Portfolio extends Component {
                 </div>
 
                 <div className="chart-container">
-                    {/* <Chart
-                        type="line"
-                        bounds={[[0, 7], [0, 100]]}
-                        values={[
-                            { value: [7, 100], label: 'one hundred' },
-                            { value: [6, 70], label: 'seventy' },
-                            { value: [5, 60], label: 'sixty' },
-                            { value: [4, 80], label: 'eighty' },
-                            { value: [3, 40], label: 'forty' },
-                            { value: [2, 0], label: 'zero' },
-                            { value: [1, 30], label: 'thirty' },
-                            { value: [0, 60], label: 'sixty' },
-                        ]}
-                        aria-label="chart"
-                    /> */}
-
+                    <canvas id="line-chart" width="800" height="450"></canvas>
                 </div>
             </div>
         )

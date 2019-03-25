@@ -8,7 +8,7 @@ Login:
 
 ![Login Screen](https://i.imgur.com/tBd28PO.png)
 
-![Dashboard (Incomplete)](https://i.imgur.com/pSzKsiC.png)
+![Dashboard - Incomplete](https://i.imgur.com/pSzKsiC.png)
 
 To get started:
 
