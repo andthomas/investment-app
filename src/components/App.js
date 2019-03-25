@@ -18,15 +18,15 @@ class App extends Component {
                     render={({ location }) => {
                         const { pathname } = location;
                         return (
-                        <TransitionGroup>
-                            <CSSTransition
-                                key={pathname}
-                                classNames="page"
-                                timeout={{
-                                    enter: 1000,
-                                    exit: 1000,
-                                }}
-                            >
+                        // <TransitionGroup>
+                        //     <CSSTransition
+                        //         key={pathname}
+                        //         classNames="page"
+                        //         timeout={{
+                        //             enter: 1000,
+                        //             exit: 1000,
+                        //         }}
+                        //     >
                                 <Route
                                     location={location}
                                     render={() => (
@@ -38,8 +38,8 @@ class App extends Component {
                                     </div>
                                     )}
                                 />
-                            </CSSTransition>
-                        </TransitionGroup>
+                        //     </CSSTransition>
+                        // </TransitionGroup>
                         );
                     }}
                 />

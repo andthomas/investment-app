@@ -5,13 +5,24 @@ import { Meter } from "grommet";
 import Chart from "chart.js";
 
 class Portfolio extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { total: 0 };
+    }
     componentDidMount() {
+        const that = this;
+        for (let i = 0; i <= 60; i++) {
+            that.setState({
+                total: that.state.total ++
+            });
+        }
+
         new Chart(document.getElementById("line-chart"), {
             type: 'line',
             data: {
                 labels: ["3 Mar", "4 Mar", "5 Mar", "6 Mar", "7 Mar", "8 Mar", "9 Mar"],
                 datasets: [{
-                    data: [6023, 6035, 6086, 6079, 6044, 6078, 6103],
+                    data: [6023, 6035, 6086, 6079, 6044, 6078, 6190],
                     borderColor: "#fff",
                     fill: false
                 }]
@@ -26,6 +37,7 @@ class Portfolio extends Component {
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontFamily: 'Josefin Sans',
                             maxTicksLimit: 3,
                             fontColor: "#fff",
                             userCallback: function (value, index, values) {
@@ -43,6 +55,7 @@ class Portfolio extends Component {
                     xAxes: [{
                         ticks: {
                             fontColor: "#fff",
+                            fontFamily: 'Josefin Sans',
                         },
                         gridLines: {
                             display: false,
@@ -61,7 +74,7 @@ class Portfolio extends Component {
                     <Meter
                         className="meter"
                         values={[{
-                            value: 60,
+                            value: this.state.total,
                             color: 'white',
                             label: 'sixty',
                             onClick: () => { }
