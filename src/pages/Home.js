@@ -15,28 +15,11 @@ class Home extends Component {
                     <Route render={({ history }) => (
                         <Button
                             className="logout-button"
-                            icon={<i className=" fa fa-cog fa-2x"></i>}
+                            icon={<i className=" fa fa-angle-left fa-2x"></i>}
                             type='button'
                             onClick={() => { history.push('/login') }}
                         />
                     )} />
-
-                    {/* <DropButton
-                        className="menu"
-                        icon={<i className=" fa fa-cog fa-2x"></i>}
-                        dropContent={
-                            <Route render={({ history }) => (
-                                <Box 
-                                    className="logout-button"
-                                    pad="large" 
-                                    onClick={() => { history.push('/') }}
-                                    background="light-2">
-                                    Logout
-                                </Box>
-                            )} />
-                        }
-                    /> */}
-                    
                 </div>
 
                 <Portfolio />

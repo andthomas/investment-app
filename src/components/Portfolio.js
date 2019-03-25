@@ -93,6 +93,43 @@ class Portfolio extends Component {
                 <div className="chart-container">
                     <canvas id="line-chart" width="800" height="450"></canvas>
                 </div>
+
+                <div className="table-container">
+                    <table>
+                        <tbody>
+                            <tr className="table-head">
+                                <td>Date</td>
+                                <td>Investment</td>
+                                <td>Total</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>20 Feb</td>
+                                <td>$10</td>
+                                <td>$5,950</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>26 Feb</td>
+                                <td>$12</td>
+                                <td>$6,023</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>2 Mar</td>
+                                <td>$15</td>
+                                <td>$6,050</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>3 Mar</td>
+                                <td>$3</td>
+                                <td>$6,064</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>8 Mar</td>
+                                <td>$20</td>
+                                <td>$6,180</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
