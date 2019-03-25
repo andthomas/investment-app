@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/andthomas/react-scratch/issues"
   },
-  "homepage": "https://github.com/andthomas/react-scratch#readme",
+  "homepage": "https://andthomas.github.io/investment-app",
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
@@ -25,6 +25,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "react-hot-loader": "^4.6.5",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
+    "gh-pages": "^2.0.1",
     "grommet": "^2.4.0",
     "mobx-react": "^5.4.3",
     "react": "^16.8.2",
