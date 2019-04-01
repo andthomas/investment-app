@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "NODE_ENV=production webpack -p",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "build": "NODE_ENV=production webpack -p"
   },
   "repository": {
     "type": "git",
