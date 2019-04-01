@@ -27,6 +27,9 @@ module.exports = {
         },
         runtimeChunk: true
     },
+    devServer: {
+        historyApiFallback: true
+    },
     module: {
         rules: [
             {
