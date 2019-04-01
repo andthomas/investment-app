@@ -2,16 +2,39 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const VENDOR_LIBS = ['react', 'react-dom'];
+
 module.exports = {
-    entry: "./src/index.js",
-    mode: "development",
+    entry: {
+        bundle: './src/index.js',
+        vendor: VENDOR_LIBS
+    },
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].[chunkhash].bundle.js',
+        chunkFilename: '[name].[chunkhash].bundle.js'
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: 'initial',
+                    name: 'vendor',
+                    test: 'vendor',
+                    enforce: true
+                },
+            }
+        },
+        runtimeChunk: true
+    },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader",
-                options: { presets: ["@babel/env"] }
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
             },
             {
                 test: /\.(?:le|c)ss$/,
@@ -25,31 +48,15 @@ module.exports = {
                         }
                     },
                 ]
-            },
-            {
-                test: /\.svg/,
-                use: {
-                    loader: 'svg-url-loader',
-                }
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
-    output: {
-        path: path.resolve(__dirname, "build"),
-        publicPath: "/",
-        filename: "bundle.js"
-    },
-    devServer: {
-        contentBase: "./build",
-        port: 3000,
-        publicPath: "http://localhost:3000/build/",
-        hotOnly: true,
-        historyApiFallback: true,
-    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve('./public/index.html'),
+            template: './src/index.html'
         }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        })
     ]
 };
