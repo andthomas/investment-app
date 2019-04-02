@@ -8,6 +8,10 @@ import Invest from "../components/Invest.js";
 import News from "../components/News.js";
 
 class Home extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {currentView: "portfolio"}
+    }
     render() {
         return (
             <div>
@@ -22,18 +26,24 @@ class Home extends Component {
                     )} />
                 </div>
 
-                <Portfolio />
-                {/* <Invest />
-                <News /> */}
+                {this.state.currentView === "portfolio" ? <Portfolio /> : null}
+                {this.state.currentView === "invest" ? <Invest /> : null}
+                {this.state.currentView === "news" ? <News /> : null}
 
                 <div className="bottom-navbar">
-                    <div className="nav-item">
+                    <div
+                        onClick={() => { this.setState({currentView: 'invest'})}} 
+                        className={`nav-item`}>
                         <i className="fa fa-bolt fa-2x"></i>
                     </div>
-                    <div className="nav-item">
+                    <div
+                        onClick={() => {this.setState({currentView: 'portfolio'})}}
+                        className="nav-item">
                         <i className="fa fa-user fa-2x"></i>
                     </div>
-                    <div className="nav-item">
+                    <div
+                        onClick={() => {this.setState({currentView: 'news'})}}
+                        className="nav-item">
                         <i className="fa fa-lock fa-2x"></i>
                     </div>
                 </div>

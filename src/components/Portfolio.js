@@ -10,12 +10,15 @@ class Portfolio extends Component {
         this.state = { total: 0 };
     }
     componentDidMount() {
-        const that = this;
-        for (let i = 0; i <= 60; i++) {
-            that.setState({
-                total: that.state.total ++
-            });
-        }
+        let that = this;
+        let i = 0
+        let tweenCounter = setInterval( function() {
+            i ++;
+            that.setState({total: i});
+            if (i >= 60 ) {
+                clearInterval(tweenCounter);
+            }
+        }, 10)
 
         new Chart(document.getElementById("line-chart"), {
             type: 'line',
@@ -103,19 +106,9 @@ class Portfolio extends Component {
                                 <td>Total</td>
                             </tr>
                             <tr className="table-row">
-                                <td>20 Feb</td>
-                                <td>$10</td>
-                                <td>$5,950</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>26 Feb</td>
-                                <td>$12</td>
-                                <td>$6,023</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>2 Mar</td>
-                                <td>$15</td>
-                                <td>$6,050</td>
+                                <td>8 Mar</td>
+                                <td>$20</td>
+                                <td>$6,180</td>
                             </tr>
                             <tr className="table-row">
                                 <td>3 Mar</td>
@@ -123,9 +116,19 @@ class Portfolio extends Component {
                                 <td>$6,064</td>
                             </tr>
                             <tr className="table-row">
-                                <td>8 Mar</td>
-                                <td>$20</td>
-                                <td>$6,180</td>
+                                <td>2 Mar</td>
+                                <td>$15</td>
+                                <td>$6,050</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>26 Feb</td>
+                                <td>$12</td>
+                                <td>$6,023</td>
+                            </tr>
+                            <tr className="table-row">
+                                <td>20 Feb</td>
+                                <td>$10</td>
+                                <td>$5,950</td>
                             </tr>
                         </tbody>
                     </table>
