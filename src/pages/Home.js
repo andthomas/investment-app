@@ -10,13 +10,15 @@ import News from "../components/News.js";
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentView: "portfolio"}
+        this.state = {currentView: "news"}
 
         // this.changeView = this.changeView.bind(this);
     }
     
     changeView(view) {
         this.setState({ currentView: view });
+
+        // this.refs[view].className += "active";
     }
 
     render() {
@@ -26,7 +28,7 @@ class Home extends Component {
                     <Route render={({ history }) => (
                         <Button
                             className="logout-button"
-                            icon={<i className=" fa fa-angle-left fa-2x"></i>}
+                            icon={<i className=" fa fa-angle-left"></i>}
                             type='button'
                             onClick={() => { history.push('/login') }}
                         />
@@ -39,19 +41,22 @@ class Home extends Component {
 
                 <div className="bottom-navbar">
                     <div
-                        onClick={ () => this.changeView('invest') } 
+                        ref="invest"
+                        onClick={ () => this.changeView('news') } 
                         className={`nav-item`}>
-                        <i className="fa fa-bolt fa-2x"></i>
+                        <i className="fas fa-newspaper"></i>
                     </div>
                     <div
+                        ref="portfolio"
                         onClick={ () => this.changeView('portfolio') }
                         className="nav-item">
-                        <i className="fa fa-user fa-2x"></i>
+                        <i className="fa fa-chart-bar"></i>
                     </div>
                     <div
-                        onClick={ () => this.changeView('news') }
+                        ref="news"
+                        onClick={ () => this.changeView('invest') }
                         className="nav-item">
-                        <i className="fa fa-lock fa-2x"></i>
+                        <i className="fa fa-user"></i>
                     </div>
                 </div>
             </div>
