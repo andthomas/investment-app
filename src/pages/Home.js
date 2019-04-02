@@ -11,7 +11,14 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {currentView: "portfolio"}
+
+        // this.changeView = this.changeView.bind(this);
     }
+    
+    changeView(view) {
+        this.setState({ currentView: view });
+    }
+
     render() {
         return (
             <div>
@@ -32,17 +39,17 @@ class Home extends Component {
 
                 <div className="bottom-navbar">
                     <div
-                        onClick={() => { this.setState({currentView: 'invest'})}} 
+                        onClick={ () => this.changeView('invest') } 
                         className={`nav-item`}>
                         <i className="fa fa-bolt fa-2x"></i>
                     </div>
                     <div
-                        onClick={() => {this.setState({currentView: 'portfolio'})}}
+                        onClick={ () => this.changeView('portfolio') }
                         className="nav-item">
                         <i className="fa fa-user fa-2x"></i>
                     </div>
                     <div
-                        onClick={() => {this.setState({currentView: 'news'})}}
+                        onClick={ () => this.changeView('news') }
                         className="nav-item">
                         <i className="fa fa-lock fa-2x"></i>
                     </div>
