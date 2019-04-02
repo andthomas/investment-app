@@ -23,7 +23,6 @@ class News extends Component {
     render() {
         return (
             <div className={`news`}>
-                <h2>NEWS</h2>
                     {this.state.currentNews.map((item, key) =>
                         <div
                             key={key} 
