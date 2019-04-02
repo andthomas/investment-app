@@ -4,11 +4,9 @@ A concept progressive web app for a fintech investment service. Built off a my o
 
 At this point in time, I have built the login screen and am working on the dashboard:
 
-Login: 
+Live version (dev still in progress): 
 
-![Login Screen](https://i.imgur.com/tBd28PO.png)
-
-![Dashboard - Incomplete](https://i.imgur.com/pSzKsiC.png)
+https://sleepy-lumiere-f1b414.netlify.com/
 
 To get started:
 

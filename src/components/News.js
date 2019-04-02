@@ -24,11 +24,18 @@ class News extends Component {
         return (
             <div className={`news`}>
                     {this.state.currentNews.map((item, key) =>
+                        // <div
+                        //     key={key} 
+                        //     className={`news-item`}>
+                        //     <img src={item.urlToImage}/>
+                        //     <div className={`news-title`}>{item.title}</div>
+                        // </div>
                         <div
-                            key={key} 
-                            className={`news-item`}>
-                            <img src={item.urlToImage}/>
-                            <div className={`news-title`}>{item.title}</div>
+                            key={key}>
+                            <div className={`news-tile`}>
+                                <img className={`news-item`} src={item.urlToImage}/>
+                                <div className={`news-title`}>{item.title}</div>
+                            </div>
                         </div>
                     )}
             </div>

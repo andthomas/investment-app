@@ -10,14 +10,12 @@ import News from "../components/News.js";
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentView: "portfolio"}
-
+        this.state = {currentView: "news"}
         // this.changeView = this.changeView.bind(this);
     }
     
     changeView(view) {
         this.setState({ currentView: view });
-
         // this.refs[view].className += "active";
     }
 
