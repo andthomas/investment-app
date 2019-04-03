@@ -32,6 +32,7 @@ class News extends Component {
                             <div className={`news-tile`}>
                                 <img className={`news-item`} src={item.urlToImage}/>
                                 <div className={`news-title`}>{item.title}</div>
+                                <div className={`news-subtitle`}>{item.source.name} | {item.author}</div>
                             </div>
                         </div>
                     )}

@@ -10,7 +10,7 @@ import News from "../components/News.js";
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentView: "portfolio"}
+        this.state = {currentView: "news"}
         // this.changeView = this.changeView.bind(this);
     }
     
@@ -26,7 +26,7 @@ class Home extends Component {
                     <Route render={({ history }) => (
                         <Button
                             className="logout-button"
-                            icon={<i className=" fa fa-angle-left"></i>}
+                            icon={<i className="fas fa-sign-out-alt"></i>}
                             type='button'
                             onClick={() => { history.push('/login') }}
                         />
