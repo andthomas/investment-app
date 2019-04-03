@@ -18,7 +18,7 @@ class News extends Component {
         .then( (data) => {
             document.getElementsByClassName('loading')[0].style.display = 'none';
             this.setState({currentNews: data.articles})
-            // console.log(this.state.currentNews)
+            console.log(this.state.currentNews)
 
         })
     }
@@ -33,6 +33,7 @@ class News extends Component {
                                 <img className={`news-item`} src={item.urlToImage}/>
                                 <div className={`news-title`}>{item.title}</div>
                                 <div className={`news-subtitle`}>{item.source.name} | {item.author}</div>
+                                <div className={`news-subtitle`}>{item.description}</div>
                             </div>
                         </div>
                     )}
