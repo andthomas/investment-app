@@ -9,7 +9,7 @@ class News extends Component {
     }
     
     componentDidMount() {
-        const req = new Request('https://newsapi.org/v2/top-headlines?q=money&from=2019-03-02&sortBy=publishedAt&sources?language=en&domains=wsj.com,nytimes.com,abc.com&,techchrunch.com&apiKey=87903eb739404351971c2d3106d16e7e')
+        const req = new Request('https://newsapi.org/v2/top-headlines?q=money&sortBy=publishedAt&sources?language=en&apiKey=87903eb739404351971c2d3106d16e7e')
         fetch(req)
         .then( (response) => {
             const data = response.json();
