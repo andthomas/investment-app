@@ -33,9 +33,11 @@ class Home extends Component {
                     )} />
                 </div>
 
-                {this.state.currentView === "portfolio" ? <Portfolio /> : null}
-                {this.state.currentView === "invest" ? <Invest /> : null}
-                {this.state.currentView === "news" ? <News /> : null}
+                <div className="app-body">
+                    {this.state.currentView === "portfolio" ? <Portfolio /> : null}
+                    {this.state.currentView === "invest" ? <Invest /> : null}
+                    {this.state.currentView === "news" ? <News /> : null}
+                </div>
 
                 <div className="bottom-navbar">
                     <div
