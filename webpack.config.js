@@ -1,6 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+
 
 const VENDOR_LIBS = ['react', 'react-dom'];
 
@@ -61,6 +64,29 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'my-domain-cache-id',
+            dontCacheBustUrlsMatching: /\.\w{8}\./,
+            filename: 'service-worker.js',
+            minify: true,
+            navigateFallback: PUBLIC_PATH + 'index.html',
+            staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+        }),
+        new WebpackPwaManifest({
+            name: 'Paper',
+            short_name: 'Paper',
+            description: 'A concept for an investment app',
+            background_color: '#ffffff',
+            theme_color: '#ffffff',
+            start_url: '/',
+            icons: [
+                {
+                    src: path.resolve('src/images/icon.png'),
+                    sizes: [96, 128, 192, 256, 384, 512],
+                    destination: path.join('assets', 'icons')
+                }
+            ]
         })
     ]
 };
