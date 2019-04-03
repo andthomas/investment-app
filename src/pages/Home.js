@@ -35,7 +35,7 @@ class Home extends Component {
 
                 <div className="app-body">
                     {this.state.currentView === "portfolio" ? <Portfolio /> : null}
-                    {this.state.currentView === "invest" ? <Invest /> : null}
+                    {this.state.currentView === "invest" ? <Portfolio /> : null}
                     {this.state.currentView === "news" ? <News /> : null}
                 </div>
 
