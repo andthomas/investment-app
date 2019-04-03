@@ -70,7 +70,7 @@ module.exports = {
             dontCacheBustUrlsMatching: /\.\w{8}\./,
             filename: 'service-worker.js',
             minify: true,
-            navigateFallback: PUBLIC_PATH + 'index.html',
+            navigateFallback: 'index.html',
             staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
         }),
         new WebpackPwaManifest({
