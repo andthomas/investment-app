@@ -9,7 +9,7 @@ class News extends Component {
     }
     
     componentDidMount() {
-        const req = new Request('https://newsapi.org/v2/top-headlines?q=money&sortBy=publishedAt&sources?language=en&apiKey=87903eb739404351971c2d3106d16e7e')
+        const req = new Request('https://newsapi.org/v2/top-headlines?sources=financial-times&apiKey=87903eb739404351971c2d3106d16e7e')
         fetch(req)
         .then( (response) => {
             const data = response.json();
@@ -18,7 +18,7 @@ class News extends Component {
         .then( (data) => {
             document.getElementsByClassName('loading')[0].style.display = 'none';
             this.setState({currentNews: data.articles})
-            // console.log(this.state.currentNews)
+            console.log(this.state.currentNews)
         })
     }
     render() {
@@ -31,7 +31,7 @@ class News extends Component {
                             <div className={`news-tile`}>
                                 <img className={`news-item`} src={item.urlToImage}/>
                                 <div className={`news-title`}>{item.title}</div>
-                                <div className={`news-subtitle`}>{item.source.name} | {item.author}</div>
+                                <div className={`news-subtitle`}>{item.source.name}</div>
                                 <div className={`news-description`}>{item.description}</div>
                             </div>
                         </div>
