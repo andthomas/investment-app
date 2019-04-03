@@ -16,13 +16,16 @@ class News extends Component {
             return data;
         })
         .then( (data) => {
+            document.getElementsByClassName('loading')[0].style.display = 'none';
             this.setState({currentNews: data.articles})
             console.log(this.state.currentNews)
+
         })
     }
     render() {
         return (
             <div className={`news`}>
+                    <h4 className="loading">LOADING NEWS</h4>
                     {this.state.currentNews.map((item, key) =>
                         <div
                             key={key}>
