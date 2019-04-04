@@ -66,7 +66,7 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
         new SWPrecacheWebpackPlugin({
-            cacheId: 'my-domain-cache-id',
+            cacheId: 'paper-cache-id',
             dontCacheBustUrlsMatching: /\.\w{8}\./,
             filename: 'service-worker.js',
             minify: true,
@@ -84,7 +84,8 @@ module.exports = {
                 {
                     src: path.resolve('src/images/icon.png'),
                     sizes: [96, 128, 192, 256, 384, 512],
-                    destination: path.join('assets', 'icons')
+                    destination: path.join('assets', 'icons'),
+                    ios: true
                 }
             ]
         })
