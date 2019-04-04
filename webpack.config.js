@@ -82,11 +82,17 @@ module.exports = {
             start_url: '/',
             icons: [
                 {
-                    src: path.resolve('src/images/icon.png'),
+                    src: path.resolve('src/images/icon-2.png'),
                     sizes: [96, 128, 192, 256, 384, 512],
                     destination: path.join('icons', 'ios'),
                     ios: true
-                }
+                },
+                {
+                    src: path.resolve('src/images/icon-2.png'),
+                    size: 1024,
+                    destination: path.join('icons', 'ios'),
+                    ios: 'startup'
+                },
             ]
         })
     ]
