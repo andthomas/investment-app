@@ -83,8 +83,8 @@ module.exports = {
             name: 'Paper',
             short_name: 'Paper',
             description: 'A concept for an investment app',
-            background_color: '#ffffff',
-            theme_color: '#ffffff',
+            background_color: '#295096',
+            theme_color: '#295096',
             start_url: '/'
         })
     ]
