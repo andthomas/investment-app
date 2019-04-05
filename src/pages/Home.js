@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import Portfolio from "../components/Portfolio.js";
 import Invest from "../components/Invest.js";
 import News from "../components/News.js";
+import PropTypes from 'prop-types';
 
 class Home extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Home extends Component {
 
                 <div className="app-body">
                     {this.state.currentView === "portfolio" ? <Portfolio /> : null}
-                    {this.state.currentView === "invest" ? <Portfolio /> : null}
+                    {this.state.currentView === "invest" ? <Invest /> : null}
                     {this.state.currentView === "news" ? <News /> : null}
                 </div>
 
@@ -63,5 +64,9 @@ class Home extends Component {
         );
     }
 }
+
+Home.propTypes = {
+    currentView: PropTypes.string
+};
 
 export default hot(module)(Home);

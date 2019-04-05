@@ -3,12 +3,14 @@ import "./Portfolio.less";
 import { hot } from "react-hot-loader";
 import { Meter } from "grommet";
 import Chart from "chart.js";
+import PropTypes from 'prop-types';
 
 class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = { total: 0 };
     }
+
     componentDidMount() {
         let that = this;
         let i = 0
@@ -101,34 +103,16 @@ class Portfolio extends Component {
                     <table>
                         <tbody>
                             <tr className="table-head">
-                                <td>Date</td>
-                                <td>Investment</td>
+                                <td>Share</td>
+                                <td>Price</td>
+                                <td>Volume</td>
                                 <td>Total</td>
                             </tr>
                             <tr className="table-row">
-                                <td>8 Mar</td>
-                                <td>$20</td>
-                                <td>$6,180</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>3 Mar</td>
-                                <td>$3</td>
-                                <td>$6,064</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>2 Mar</td>
-                                <td>$15</td>
-                                <td>$6,050</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>26 Feb</td>
-                                <td>$12</td>
-                                <td>$6,023</td>
-                            </tr>
-                            <tr className="table-row">
-                                <td>20 Feb</td>
-                                <td>$10</td>
-                                <td>$5,950</td>
+                                <td>TLS</td>
+                                <td>$2</td>
+                                <td>100</td>
+                                <td>$200</td>
                             </tr>
                         </tbody>
                     </table>
@@ -137,5 +121,9 @@ class Portfolio extends Component {
         )
     }
 }
+
+Portfolio.propTypes = {
+    total: PropTypes.number
+};
 
 export default hot(module)(Portfolio);

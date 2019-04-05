@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./News.less";
 import { hot } from "react-hot-loader";
+import PropTypes from 'prop-types';
 
 class News extends Component {
     constructor(props) {
@@ -40,5 +41,9 @@ class News extends Component {
         );
     }
 }
+
+News.propTypes = {
+    currentNews: PropTypes.array
+};
 
 export default hot(module)(News);
