@@ -53,7 +53,13 @@ module.exports = {
                         options: {
                             importLoaders: 1,
                         }
-                    },
+                    }
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
                 ]
             }
         ]
@@ -79,8 +85,7 @@ module.exports = {
             description: 'A concept for an investment app',
             background_color: '#ffffff',
             theme_color: '#ffffff',
-            start_url: '/',
-            ]
+            start_url: '/'
         })
     ]
 };
