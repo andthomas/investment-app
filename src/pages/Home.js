@@ -1,23 +1,32 @@
 import React, { Component } from "react";
 import "./Home.less";
 import { hot } from "react-hot-loader";
-import { DropButton, Box, Button } from "grommet";
+import { Button } from "grommet";
 import { Route } from 'react-router-dom';
 import Portfolio from "../components/Portfolio.js";
 import Invest from "../components/Invest.js";
 import News from "../components/News.js";
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as shareActions from '../actions/shareActions';
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentView: "portfolio"}
+        this.state = { currentView: "portfolio",
+                       selectedShares: ['aapl', 'msft'] }
         // this.changeView = this.changeView.bind(this);
     }
     
     changeView(view) {
         this.setState({ currentView: view });
         // this.refs[view].className += "active";
+    }
+
+    componentDidMount() {
+        // Dispatch action to fetch the share data
+        // this.props.shareActions.fetchShareData(this.state.selectedShares);
     }
 
     render() {
@@ -32,10 +41,13 @@ class Home extends Component {
                             onClick={() => { history.push('/login') }}
                         />
                     )} />
+                    
                 </div>
 
+                   
+    
                 <div className="app-body">
-                    {this.state.currentView === "portfolio" ? <Portfolio /> : null}
+                    {this.state.currentView === "portfolio" ? <Portfolio shareData={this.props.shareData}/> : null}
                     {this.state.currentView === "invest" ? <Invest /> : null}
                     {this.state.currentView === "news" ? <News /> : null}
                 </div>
@@ -66,7 +78,26 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+    shareActions: PropTypes.object,
+    shareData: PropTypes.array,
     currentView: PropTypes.string
 };
 
-export default hot(module)(Home);
+
+function mapStateToProps(state) {
+    return {
+        shareData: state.data.shareData
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        shareActions: bindActionCreators(shareActions, dispatch)
+    };
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Home);
