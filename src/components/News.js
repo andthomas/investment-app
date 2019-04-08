@@ -19,7 +19,6 @@ class News extends Component {
         .then( (data) => {
             document.getElementsByClassName('loading')[0].style.display = 'none';
             this.setState({currentNews: data.articles})
-            console.log(this.state.currentNews)
         })
     }
     render() {

@@ -5,94 +5,106 @@ import { Meter } from "grommet";
 import Chart from "chart.js";
 import PropTypes from 'prop-types';
 
+const randomColor = require('randomcolor')
+
 class Portfolio extends Component {
     constructor(props) {
         super(props);
-        this.state = { total: 0 };
+        this.state = {
+            total: 0
+        }
     }
-
+    
     componentDidMount() {
+
         let that = this;
         let i = 0
-        let tweenCounter = setInterval( function() {
-            i ++;
-            that.setState({total: i});
-            if (i >= 60 ) {
+        let tweenCounter = setInterval(function () {
+            i++;
+            that.setState({ total: i });
+            if (i >= 100) {
                 clearInterval(tweenCounter);
             }
-        }, 10)
+        }, 5)
 
-        new Chart(document.getElementById("line-chart"), {
-            type: 'line',
-            data: {
-                labels: ["3 Mar", "4 Mar", "5 Mar", "6 Mar", "7 Mar", "8 Mar", "9 Mar"],
-                datasets: [{
-                    data: [6023, 6035, 6086, 6079, 6044, 6078, 6190],
-                    borderColor: "#fff",
-                    fill: false
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
+        let sharePriceData = [];
+        this.props.shareData.map( (s) => {
+            let obj = {};
+            obj.data = s[Object.keys(s)].map( (p) => p.close);
+            obj.borderColor = randomColor();
+            obj.fill= false;
+            sharePriceData.push(obj);
+        })
+
+        if (this.props.shareData[0]) {
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: this.props.shareData[0][Object.keys(this.props.shareData[0])].map((d) => d.label),
+                    datasets: sharePriceData
                 },
-                tooltips: {
-                    enabled: false
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontFamily: 'Josefin Sans',
-                            maxTicksLimit: 3,
-                            fontColor: "#fff",
-                            userCallback: function (value, index, values) {
-                                value = value.toString();
-                                value = value.split(/(?=(?:...)*$)/);
-                                value = value.join(',');
-                                return value;
-                            }
-                        },
-                        gridLines: {
-                            display: false,
-                            color: "#FFFFFF"
-                        },
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: "#fff",
-                            fontFamily: 'Josefin Sans',
-                        },
-                        gridLines: {
-                            display: false,
-                            color: "#FFFFFF"
-                        },
-                    }]
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        enabled: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                fontFamily: 'Josefin Sans',
+                                maxTicksLimit: 9,
+                                fontColor: "#fff",
+                                userCallback: function (value, index, values) {
+                                    value = value.toString();
+                                    value = value.split(/(?=(?:...)*$)/);
+                                    value = value.join(',');
+                                    return value;
+                                }
+                            },
+                            gridLines: {
+                                display: false,
+                                color: "#FFFFFF"
+                            },
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "#fff",
+                                fontFamily: 'Josefin Sans',
+                            },
+                            gridLines: {
+                                display: false,
+                                color: "#FFFFFF"
+                            },
+                        }]
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+
     render() {
         return (
             <div className="portfolio-container">
-                
                 <div className="meter-container">
                     <Meter
                         className="meter"
                         values={[{
                             value: this.state.total,
-                            color: 'white',
+                            color: '#69995D',
                             label: 'sixty',
                             onClick: () => { }
                         }]}
                         thickness='small'
                         type="circle"
                         aria-label="meter"
-                        />
-                        <div className="meter-label">
-                            <span>Portfolio value</span>
-                            <p>$6,103</p>
-                            <span>61% of $10,000 goal</span>
-                        </div>
+                    />
+                    <div className="meter-label">
+                        <span>Portfolio Movement</span>
+                        <p>+6%</p>
+                        <span>for the past 30 Days</span>
+                    </div>
                 </div>
 
                 <div className="chart-container">
@@ -104,16 +116,20 @@ class Portfolio extends Component {
                         <tbody>
                             <tr className="table-head">
                                 <td>Share</td>
-                                <td>Price</td>
-                                <td>Volume</td>
-                                <td>Total</td>
+                                <td>Open</td>
+                                <td>Close</td>
+                                <td>Change</td>
                             </tr>
-                            <tr className="table-row">
-                                <td>TLS</td>
-                                <td>$2</td>
-                                <td>100</td>
-                                <td>$200</td>
-                            </tr>
+                            { 
+                                this.props.shareData.map((item, index) => 
+                                    <tr key={index} className="table-row">
+                                        <td id="name">{Object.keys(item)}</td>
+                                        <td id="open">{item[Object.keys(item)][0].open}</td>
+                                        <td id="close">{item[Object.keys(item)][0].close}</td>
+                                        <td id="change">{item[Object.keys(item)][0].change}%</td>
+                                    </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
