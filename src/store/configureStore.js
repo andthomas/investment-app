@@ -9,9 +9,10 @@ function configureStore(initialState = {}) {
         // auth: () => ({ mock: true }),
         data: persistReducer(
             {
-                key: "data", // key for localStorage key, will be: "persist:data"
+                key: "data", // key for localStorage key, will be: "persist:form"
                 storage,
                 debug: true,
+                blacklist: ['foo'],
             },
             rootReducer
         ),
@@ -21,14 +22,14 @@ function configureStore(initialState = {}) {
         key: "root",
         debug: true,
         storage,
-        // whitelist: ['auth'],
+        whitelist: ['auth'],
     }, reducer), initialState, applyMiddleware(thunk));
 
-    console.log("initialState", store.getState());
+    // console.log("initialState", store.getState());
 
     const persistor = persistStore(store, null, () => {
         // if you want to get restoredState
-        console.log("restoredState", store.getState());
+        // console.log("restoredState", store.getState());
     });
 
     return { store, persistor };

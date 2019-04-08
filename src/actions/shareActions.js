@@ -17,6 +17,9 @@ export function fetchShareData(shares) {
                 shareData.push({[s]: data});
             })
         })
-        dispatch(receiveShareData(shareData))
+
+        if (shareData !== []) {
+            dispatch(receiveShareData(shareData))
+        }
     };
 }

@@ -5,11 +5,11 @@ export default function shareData(state = initialState.shareData, action) {
     let newState;
     switch (action.type) {
         case FETCH_SHARE_DATA:
-            console.log('FETCH_SHARE_DATA Action')
+            // console.log('FETCH_SHARE_DATA Action')
             return action;
         case RECEIVE_SHARE_DATA:
             newState = action.shareData;
-            console.log('RECEIVE_SHARE_DATA Action')
+            // console.log('RECEIVE_SHARE_DATA Action')
             return newState;
         default:
             return state;

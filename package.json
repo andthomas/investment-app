@@ -41,6 +41,7 @@
     "gh-pages": "^2.0.1",
     "grommet": "^2.4.0",
     "mobx-react": "^5.4.3",
+    "randomcolor": "^0.5.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",

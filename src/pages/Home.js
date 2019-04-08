@@ -15,7 +15,7 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = { currentView: "portfolio",
-                       selectedShares: ['aapl', 'msft'] }
+                       selectedShares: ['m', 'gps'] }
         // this.changeView = this.changeView.bind(this);
     }
     
@@ -26,7 +26,7 @@ class Home extends Component {
 
     componentDidMount() {
         // Dispatch action to fetch the share data
-        // this.props.shareActions.fetchShareData(this.state.selectedShares);
+        this.props.shareActions.fetchShareData(this.state.selectedShares);
     }
 
     render() {
@@ -95,7 +95,6 @@ function mapDispatchToProps(dispatch) {
         shareActions: bindActionCreators(shareActions, dispatch)
     };
 }
-
 
 export default connect(
     mapStateToProps,

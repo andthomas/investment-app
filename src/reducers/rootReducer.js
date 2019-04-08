@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import shareData from './stuffReducer';
+import shareData from './shareReducer';
 
 const rootReducer = combineReducers({
     shareData
