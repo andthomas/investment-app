@@ -1,3 +1,4 @@
+"use strict"
 import React, { Component } from "react";
 import "./Home.less";
 import { hot } from "react-hot-loader";
@@ -23,10 +24,16 @@ class Home extends Component {
     
     changeView(view) {
         this.setState({ currentView: view });
-        // this.refs[view].className += "active";
+        const classes = Array.from(document.getElementsByClassName('nav-item'))
+        classes.forEach( (c) => {
+            c.style.borderBottom = "0px";
+        })
+        console.log(document.getElementById(view))
+        document.getElementById(view).style.borderBottom = '3px solid white';
     }
 
     componentDidMount() {
+        this.changeView(this.state.currentView)
         // Dispatch action to fetch the share data
         this.props.shareActions.fetchShareData(this.state.selectedShares);
     }
@@ -53,19 +60,19 @@ class Home extends Component {
 
                 <div className="bottom-navbar">
                     <div
-                        ref="invest"
+                        id="news"
                         onClick={ () => this.changeView('news') } 
                         className={`nav-item`}>
                         <i className="fas fa-newspaper"></i>
                     </div>
                     <div
-                        ref="portfolio"
+                        id="portfolio"
                         onClick={ () => this.changeView('portfolio') }
                         className="nav-item">
                         <i className="fa fa-chart-bar"></i>
                     </div>
                     <div
-                        ref="news"
+                        id="invest"
                         onClick={ () => this.changeView('invest') }
                         className="nav-item">
                         <i className="fa fa-user"></i>

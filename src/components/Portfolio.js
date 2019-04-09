@@ -11,7 +11,8 @@ class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            total: 0
+            total: 0,
+            colorList: ['#DDCECD', '#DDD8B8', '#90B494', '#718F94', '#28AFB0', '#B3CBB9']
         }
     }
     
@@ -28,10 +29,10 @@ class Portfolio extends Component {
         }, 5)
 
         let sharePriceData = [];
-        this.props.shareData.map( (s) => {
+        this.props.shareData.map( (s, i) => {
             let obj = {};
             obj.data = s[Object.keys(s)].map( (p) => p.close);
-            obj.borderColor = randomColor();
+            obj.borderColor = this.state.colorList[i];
             obj.fill= false;
             sharePriceData.push(obj);
         })
@@ -96,7 +97,7 @@ class Portfolio extends Component {
                     />
                     <div className="meter-label">
                         <span>Portfolio Movement</span>
-                        <p>+6%</p>
+                        <p>+3%</p>
                         <span>for the past 30 Days</span>
                     </div>
                 </div>
