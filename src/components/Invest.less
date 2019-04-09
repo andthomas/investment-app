@@ -1,0 +1,26 @@
+.invest-container {
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+    height: 101%;
+    overflow-y: scroll;
+
+    .grid {
+        display: grid;
+        grid-template-columns: calc(33.3% - 7px) calc(33.3% - 7px) calc(33.3% - 7px);
+        margin: 30px 0px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        
+        .inner-grid {
+            border: 1px solid #ffffff;
+            padding: 10px 2px;
+            color: #275096;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #ffffff;
+            cursor: pointer;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+        }
+    }
+}

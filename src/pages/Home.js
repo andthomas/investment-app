@@ -14,8 +14,10 @@ import * as shareActions from '../actions/shareActions';
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentView: "portfolio",
-                       selectedShares: ['m', 'gps'] }
+        this.state = { currentView: "invest",
+                       selectedShares: ['m', 'gps'],
+                       shareList: ['AAL', 'AAPL', 'ADBE', 'ADI', 'ADP', 'ADSK', 'ALGN', 'ALXN', 'AMAT', 'AMD', 'AMGN', 'AMZN', 'ASML', 'ATVI', 'AVGO', 'BIDU', 'BIIB', 'BKNG', 'BMRN', 'CDNS', 'CELG', 'CERN', 'CHKP', 'CHTR', 'CMCSA', 'COST', 'CSCO', 'CSX', 'CTAS', 'CTRP', 'CTSH', 'CTXS', 'DLTR', 'EA', 'EBAY', 'EXPE', 'FAST', 'FB', 'FISV', 'FOX', 'FOXA', 'GILD', 'GOOG', 'GOOGL', 'HAS', 'HSIC', 'IDXX', 'ILMN', 'INCY', 'INTC', 'INTU', 'ISRG', 'JBHT', 'JD', 'KHC', 'KLAC', 'LBTYA', 'LBTYK', 'LRCX', 'LULU', 'M', 'MAR', 'MCHP', 'MDLZ', 'MELI', 'MNST', 'MSFT', 'MU', 'MXIM', 'MYL', 'NFLX', 'NTAP', 'NTES', 'NVDA', 'NXPI', 'ORLY', 'PAYX', 'PCAR', 'PEP', 'PYPL', 'QCOM', 'REGN', 'ROST', 'SBUX', 'SIRI', 'SNPS', 'SWKS', 'SYMC', 'TMUS', 'TSLA', 'TTWO', 'TXN', 'UAL', 'ULTA', 'VRSK', 'VRSN', 'VRTX', 'WBA', 'WDAY', 'WDC', 'WLTW', 'WYNN', 'XEL', 'XLNX']
+                    }
         // this.changeView = this.changeView.bind(this);
     }
     
@@ -41,14 +43,11 @@ class Home extends Component {
                             onClick={() => { history.push('/login') }}
                         />
                     )} />
-                    
                 </div>
-
-                   
     
                 <div className="app-body">
                     {this.state.currentView === "portfolio" ? <Portfolio shareData={this.props.shareData}/> : null}
-                    {this.state.currentView === "invest" ? <Invest /> : null}
+                    {this.state.currentView === "invest" ? <Invest shareList={this.state.shareList}/> : null}
                     {this.state.currentView === "news" ? <News /> : null}
                 </div>
 
@@ -85,8 +84,10 @@ Home.propTypes = {
 
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
-        shareData: state.data.shareData
+        shareData: state.data.shareData,
+        shareList: state.data.shareList
     };
 }
 

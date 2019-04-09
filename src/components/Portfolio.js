@@ -55,13 +55,7 @@ class Portfolio extends Component {
                             ticks: {
                                 fontFamily: 'Josefin Sans',
                                 maxTicksLimit: 9,
-                                fontColor: "#fff",
-                                userCallback: function (value, index, values) {
-                                    value = value.toString();
-                                    value = value.split(/(?=(?:...)*$)/);
-                                    value = value.join(',');
-                                    return value;
-                                }
+                                fontColor: "#fff"
                             },
                             gridLines: {
                                 display: false,
@@ -71,7 +65,7 @@ class Portfolio extends Component {
                         xAxes: [{
                             ticks: {
                                 fontColor: "#fff",
-                                fontFamily: 'Josefin Sans',
+                                fontFamily: 'Josefin Sans'
                             },
                             gridLines: {
                                 display: false,
