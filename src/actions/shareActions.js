@@ -8,7 +8,7 @@ export function fetchShareData(shares) {
     return (dispatch) => {
         const shareData = []
         shares.map((s) => {
-            fetch(`https://cloud.iexapis.com/beta/stock/${s}/chart/1m?token=sk_53be0e5f18c14df8ae6341b2ab312104`)
+            fetch(`https://cloud.iexapis.com/beta/stock/${s}/chart/1m?token=sk_93790ffb1bee4d389be585dfc523b9bc`)
             .then((response) => {
                 const data = response.json();
                 return data;
