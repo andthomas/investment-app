@@ -33,7 +33,12 @@ class Portfolio extends Component {
         })
 
         let indMov = closeTotal / openTotal;
-        let c = Math.round((indMov - 1) * 10000)/100
+        let c;
+        if (indMov === NaN) {
+            indMov = 0; 
+        } else {
+            c = Math.round((indMov - 1) * 10000) / 100;
+        }
 
         if (c > 0) c = `+${c}`
         this.setState({movement: c})
