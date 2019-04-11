@@ -104,6 +104,7 @@ class Portfolio extends Component {
                 }
             });
             document.getElementById("line-chart").height = 500;
+            document.getElementById("line-chart").width = 350;
         }
     }
 
