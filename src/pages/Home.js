@@ -15,7 +15,7 @@ import * as shareActions from '../actions/shareActions';
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentView: "news",
+        this.state = { currentView: "invest",
                        selectedShares: ['AAPL', 'ADBE']
                     }
     }

@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import "./Invest.less";
 import { hot } from "react-hot-loader";
-import { Select } from "grommet";
+import { TextInput } from "grommet";
+import { strict } from "assert";
 
 class Invest extends Component {
     constructor(props) {
         super(props);
         this.state = {
             value: 0,
-            shareList: ['AAL', 'AAPL', 'ADBE', 'ADI', 'ADP', 'ADSK', 'ALGN', 'ALXN', 'AMAT', 'AMD', 'AMGN', 'AMZN', 'ASML', 'ATVI', 'AVGO', 'BIDU', 'BIIB', 'BKNG', 'BMRN', 'CDNS', 'CELG', 'CERN', 'CHKP', 'CHTR', 'CMCSA', 'COST', 'CSCO', 'CSX', 'CTAS', 'CTRP', 'CTSH', 'CTXS', 'DLTR', 'EA', 'EBAY', 'EXPE', 'FAST', 'FB', 'FISV', 'FOX', 'FOXA', 'GILD', 'GOOG', 'GOOGL', 'HAS', 'HSIC', 'IDXX', 'ILMN', 'INCY', 'INTC', 'INTU', 'ISRG', 'JBHT', 'JD', 'KHC', 'KLAC', 'LBTYA', 'LBTYK', 'LRCX', 'LULU', 'M', 'MAR', 'MCHP', 'MDLZ', 'MELI', 'MNST', 'MSFT', 'MU', 'MXIM', 'MYL', 'NFLX', 'NTAP', 'NTES', 'NVDA', 'NXPI', 'ORLY', 'PAYX', 'PCAR', 'PEP', 'PYPL', 'QCOM', 'REGN', 'ROST', 'SBUX', 'SIRI', 'SNPS', 'SWKS', 'SYMC', 'TMUS', 'TSLA', 'TTWO', 'TXN', 'UAL', 'ULTA', 'VRSK', 'VRSN', 'VRTX', 'WBA', 'WDAY', 'WDC', 'WLTW', 'WYNN', 'XEL', 'XLNX']
+            visibleShares: [],
+            shareList: [{ "id": "AAPL", "name": "Apple Inc." }, { "id": "ADI", "name": "Analog Devices, Inc." }, { "id": "ALGN", "name": "Align Technology, Inc." }, { "id": "AMD", "name": "Advanced Micro Devices, Inc." }, { "id": "ASML", "name": "ASML Holding NV" }, { "id": "BIDU", "name": "Baidu Inc" }, { "id": "BMRN", "name": "BioMarin Pharmaceutical Inc." }, { "id": "CERN", "name": "Cerner Corporation" }, { "id": "CMCSA", "name": "Comcast Corporation" }, { "id": "CSX", "name": "CSX Corporation" }, { "id": "CTSH", "name": "Cognizant Technology Solutions" }, { "id": "EA", "name": "Electronic Arts Inc." }, { "id": "FOX", "name": "Fox Corp Class B" }, { "id": "HSIC", "name": "Henry Schein, Inc." }, { "id": "INCY", "name": "Incyte Corporation" }, { "id": "KHC", "name": "Kraft Heinz Co" }, { "id": "LBTYK", "name": "Liberty Global PLC Class C" }, { "id": "M", "name": "Macy's Inc" }, { "id": "MDLZ", "name": "Mondelez International" }, { "id": "MSFT", "name": "Microsoft Corporation" }, { "id": "NTES", "name": "NetEase Inc" }, { "id": "ORLY", "name": "O'Reilly Automotive Inc" }, { "id": "PEP", "name": "PepsiCo, Inc." }, { "id": "REGN", "name": "Regeneron Pharmaceuticals Inc" }, { "id": "SIRI", "name": "Sirius XM Holdings Inc" }, { "id": "SYMC", "name": "Symantec Corporation" }, { "id": "ULTA", "name": "Ulta Beauty Inc" }, { "id": "VRTX", "name": "Vertex Pharmaceuticals Incorporated" }, { "id": "WDC", "name": "Western Digital Corp" }, { "id": "XEL", "name": "Xcel Energy Inc" }]
         }
     }
 
@@ -41,7 +43,15 @@ class Invest extends Component {
         })
     }
 
+    filterShares(e) {
+        const results = this.state.shareList.filter((s, i) => {
+            if (s.name.toLowerCase().includes(e.toLowerCase())) return s;
+        })
+        this.setState({visibleShares: results})
+    }
+
     componentDidMount() {
+        this.setState({visibleShares: this.state.shareList});
         this.highlightSelectedButtons()
     }
     
@@ -53,16 +63,19 @@ class Invest extends Component {
         return (
             <div className="invest-container">
                 <div className="grid">
-
+                    <input
+                        placeholder="Filter companies"
+                        onChange={event => this.filterShares(event.target.value)}
+                    ></input>
                     {
-                        this.state.shareList.map( (share, index) => {
+                        this.state.visibleShares.map( (share, index) => {
                             return (
                                 <div 
                                     className="inner-grid" 
-                                    id={share}
-                                    onClick={() => {this.onItemClick(share)}}
-                                    key={share}>
-                                        {share}
+                                    id={share.id}
+                                    onClick={() => {this.onItemClick(share.id)}}
+                                    key={share.id}>
+                                    {share.name} ({share.id})
                                 </div>
                                 )
                         })

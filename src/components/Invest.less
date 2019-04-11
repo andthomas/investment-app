@@ -4,17 +4,36 @@
     width: 90%;
     height: 101%;
     overflow-y: scroll;
-
+    font-family: 'Playfair Display', serif;
+    
     .grid {
         display: grid;
-        grid-template-columns: calc(33.3% - 7px) calc(33.3% - 7px) calc(33.3% - 7px);
+        // grid-template-columns: calc(33.3% - 7px) calc(33.3% - 7px) calc(33.3% - 7px);
         margin: 30px 0px;
         grid-column-gap: 10px;
         grid-row-gap: 10px;
         
+        input {
+            height: 35px;
+            border-radius: 5px;
+            border: 0px;
+            padding-left: 10px;  
+        }
+        
+        input:focus {
+            outline: none !important;
+            outline-color: rgba(0,0,0,0);
+        }
+
+        input::placeholder {
+            // font-family: 'Playfair Display', serif;
+            color: rgba(0,0,0,0.7);
+        }
+        
         .inner-grid {
             padding: 10px 2px;
-            color: #275096;
+            color: black;
+            font-size: 13px;
             border-radius: 5px;
             text-align: center;
             background-color: #ffffff;
