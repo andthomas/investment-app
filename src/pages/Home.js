@@ -58,7 +58,14 @@ class Home extends Component {
             })
             .then((data) => {
                 let news = this.state.fetchedNews;
-                news.unshift(data.articles)
+                let newNews = data.articles;
+                if (newNews.length > 10) {
+                    newNews = newNews.filter((n, i) => {
+                        if (i < 5) return n
+                    })
+                }
+                // console.log(news.length)
+                news.unshift(newNews)
                 this.setState({ fetchedNews: news.flat() })
             })
     }
@@ -100,7 +107,7 @@ class Home extends Component {
                         id="invest"
                         onClick={ () => this.changeView('invest') }
                         className="nav-item">
-                        <i className="fa fa-user"></i>
+                        <i className="fas fa-clipboard-list"></i>
                     </div>
                 </div>
             </div>
