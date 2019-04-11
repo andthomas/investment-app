@@ -46,7 +46,6 @@ class Portfolio extends Component {
     }
     
     componentDidMount() {
-        console.log(this.props.shareData)
         this.calculateMovement();
 
         let that = this;

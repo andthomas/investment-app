@@ -6,26 +6,12 @@ import PropTypes from 'prop-types';
 class News extends Component {
     constructor(props) {
         super(props)
-        this.state = {currentNews: []}
     }
     
-    componentDidMount() {
-        const req = new Request('https://newsapi.org/v2/top-headlines?sources=financial-times&apiKey=87903eb739404351971c2d3106d16e7e')
-        fetch(req)
-        .then( (response) => {
-            const data = response.json();
-            return data;
-        })
-        .then( (data) => {
-            document.getElementsByClassName('loading')[0].style.display = 'none';
-            this.setState({currentNews: data.articles})
-        })
-    }
     render() {
         return (
             <div className={`news`}>
-                    <h4 className="loading">LOADING NEWS</h4>
-                    {this.state.currentNews.map((item, key) =>
+                    {this.props.currentNews.map((item, key) =>
                         <div
                             key={key}>
                             <div className={`news-tile`}>

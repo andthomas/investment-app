@@ -16,7 +16,8 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = { currentView: "news",
-                       selectedShares: ['AAPL', 'BIDU']
+                       selectedShares: ['AAPL', 'BIDU'],
+                       fetchedNews: []
                     }
     }
     
@@ -31,12 +32,29 @@ class Home extends Component {
 
     componentDidMount() {
         this.changeView(this.state.currentView)
+        this.state.selectedShares.forEach((s) => {
+            this.fetchNews(s)
+        })
         this.props.shareActions.fetchShareData(this.state.selectedShares);
     }
     
     updateShareList(selShares) {
         this.setState({selectedShares: selShares})
         this.props.shareActions.fetchShareData(this.state.selectedShares);
+    }
+
+    fetchNews(share) {
+        const req = new Request(`https://newsapi.org/v2/everything?language=en&q=${share}&from=2019-03-11&apiKey=87903eb739404351971c2d3106d16e7e`)
+        fetch(req)
+            .then((response) => {
+                const data = response.json();
+                return data;
+            })
+            .then((data) => {
+                let news = this.state.fetchedNews;
+                news.unshift(data.articles)
+                this.setState({ fetchedNews: news.flat() })
+            })
     }
 
     render() {
@@ -56,7 +74,7 @@ class Home extends Component {
                 <div className="app-body">
                     {this.state.currentView === "portfolio" ? <Portfolio shareData={this.props.shareData}/> : null}
                     {this.state.currentView === "invest" ? <Invest selectedShares={this.state.selectedShares} onSelectShares={this.updateShareList.bind(this)}/> : null}
-                    {this.state.currentView === "news" ? <News /> : null}
+                    {this.state.currentView === "news" ? <News currentNews={this.state.fetchedNews}/> : null}
                 </div>
 
                 <div className="bottom-navbar">
