@@ -66,7 +66,7 @@ class Invest extends Component {
             <div className="invest-container">
                 <div className="grid">
                     <input
-                        placeholder="Filter companies"
+                        placeholder="Filter NASDAQ"
                         onChange={event => this.filterShares(event.target.value)}
                     ></input>
                     {

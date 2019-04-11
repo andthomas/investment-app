@@ -32,15 +32,21 @@ class Home extends Component {
 
     componentDidMount() {
         this.changeView(this.state.currentView)
-        this.state.selectedShares.forEach((s) => {
-            this.fetchNews(s)
-        })
+        this.getNewsForEachShare()
         this.props.shareActions.fetchShareData(this.state.selectedShares);
+    }
+
+    getNewsForEachShare() {
+        this.setState({fetchedNews: []});
+        this.state.selectedShares.forEach((s) => {
+            this.fetchNews(s);
+        });
     }
     
     updateShareList(selShares) {
         this.setState({selectedShares: selShares})
         this.props.shareActions.fetchShareData(this.state.selectedShares);
+        this.getNewsForEachShare()
     }
 
     fetchNews(share) {
