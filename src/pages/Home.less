@@ -5,26 +5,27 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #295096;
-
+    // background-color: #295096;
+    display: none;
+    
     .logout-button {
         position: absolute;
         right: 8px; 
         top: 7px;
-
+        
         i {
-            color: #fff;
+            color: #001b4a;
             font-size: 24px;
         }
     }
 }
 
 .app-body{
-    height: calc(100vh - 120px);
+    height: calc(100vh - 60px);
     position: relative;
-    margin-top: 60px;
+    // margin-top: 60px;
     max-height: 830px;
-
+    
     &:before {
         content: "";
         position: absolute;
@@ -32,25 +33,26 @@
         top: -44px;
         left: 0;
         pointer-events: none;
-        background-image: linear-gradient(to top, rgba(41, 80, 150, 0), #295096 10%);
+        // background-image: linear-gradient(to top, rgba(41, 80, 150, 0), #295096 10%);
         width: 100%;
         height: 49px;
     }
-
-    &:after {
-        content: "";
-        position: absolute;
-        z-index: 1;
-        bottom: -63px;
-        left: 0;
-        pointer-events: none;
-        width: 100%;
-        background-image: linear-gradient(to bottom, rgba(30, 60, 115, 0), #1e3c73 10%);
-        height: 80px;
-    }
+    
+    // &:after {
+    //     content: "";
+    //     position: absolute;
+    //     z-index: 1;
+    //     bottom: -63px;
+    //     left: 0;
+    //     pointer-events: none;
+    //     width: 100%;
+    //     // background-image: linear-gradient(to bottom, rgba(30, 60, 115, 0), #1e3c73 10%);
+    //     height: 80px;
+    // }
 }
 
 .bottom-navbar {
+    background-color: #001b4a;
     position: absolute;
     bottom: 0px;
     left: 0px;

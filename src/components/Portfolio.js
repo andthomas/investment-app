@@ -12,11 +12,37 @@ class Portfolio extends Component {
         super(props);
         this.state = {
             total: 0,
-            colorList: ['#DDCECD', '#DDD8B8', '#90B494', '#718F94', '#28AFB0', '#B3CBB9']
+            movement: 0,
+            colorList: ['#FFBA08', '#3F88C5', '#06D6A0', '#28AFB0', '#432534', '#D00000']
         }
+    }
+
+    calculateMovement() {
+        const openCloseData = this.props.shareData.map((share) => {
+            const open = share[Object.keys(share)][0].open;
+            const close = share[Object.keys(share)][share[Object.keys(share)].length - 1].close;
+            return [open, close]
+        })
+
+
+        let openTotal = 0;
+        let closeTotal = 0;
+        openCloseData.forEach((s) => {
+            openTotal = openTotal + s[0]
+            closeTotal = closeTotal + s[1]
+        })
+
+        let indMov = closeTotal / openTotal;
+        let c = Math.round((indMov - 1) * 10000)/100
+
+        if (c > 0) c = `+${c}`
+        this.setState({movement: c})
+
     }
     
     componentDidMount() {
+
+        this.calculateMovement();
 
         let that = this;
         let i = 0
@@ -45,6 +71,7 @@ class Portfolio extends Component {
                     datasets: sharePriceData
                 },
                 options: {
+                    maintainAspectRatio: false,
                     legend: {
                         display: false
                     },
@@ -56,26 +83,27 @@ class Portfolio extends Component {
                             ticks: {
                                 fontFamily: 'Josefin Sans',
                                 maxTicksLimit: 9,
-                                fontColor: "#fff"
+                                fontColor: "#000000"
                             },
                             gridLines: {
                                 display: false,
-                                color: "#FFFFFF"
+                                color: "#000000"
                             },
                         }],
                         xAxes: [{
                             ticks: {
-                                fontColor: "#fff",
+                                fontColor: "#000000",
                                 fontFamily: 'Josefin Sans'
                             },
                             gridLines: {
                                 display: false,
-                                color: "#FFFFFF"
+                                color: "#000000"
                             },
                         }]
                     }
                 }
             });
+            document.getElementById("line-chart").height = 500;
         }
     }
 
@@ -87,7 +115,7 @@ class Portfolio extends Component {
                         className="meter"
                         values={[{
                             value: this.state.total,
-                            color: '#69995D',
+                            color: 'rgb(3, 206, 164)',
                             label: 'sixty',
                             onClick: () => { }
                         }]}
@@ -96,8 +124,8 @@ class Portfolio extends Component {
                         aria-label="meter"
                     />
                     <div className="meter-label">
-                        <span>Portfolio Movement</span>
-                        <p>+3%</p>
+                        <span>Aggregate Movement</span>
+                        <p>{this.state.movement}%</p>
                         <span>for the past 30 Days</span>
                     </div>
                 </div>
