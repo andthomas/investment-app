@@ -151,7 +151,7 @@ class Portfolio extends Component {
                             </tr>
                             { 
                                 this.props.shareData.map((item, index) => 
-                                    <tr key={index} className="table-row">
+                                    <tr id={index} key={index} className="table-row">
                                         <td id="name">{Object.keys(item)}</td>
                                         <td id="open">{item[Object.keys(item)][0].open}</td>
                                         <td id="close">{item[Object.keys(item)][0].close}</td>
