@@ -13,7 +13,7 @@ class Portfolio extends Component {
         this.state = {
             total: 0,
             movement: 0,
-            colorList: ['#FFBA08', '#3F88C5', '#06D6A0', '#28AFB0', '#432534', '#D00000']
+            colorList: ['#3F88C5', '#FFBA08', '#06D6A0', '#28AFB0', '#432534', '#D00000']
         }
     }
 
@@ -46,7 +46,7 @@ class Portfolio extends Component {
     }
     
     componentDidMount() {
-
+        console.log(this.props.shareData)
         this.calculateMovement();
 
         let that = this;
@@ -146,16 +146,16 @@ class Portfolio extends Component {
                             <tr className="table-head">
                                 <td>Share</td>
                                 <td>Open</td>
-                                <td>Close</td>
+                                <td>Current</td>
                                 <td>Change</td>
                             </tr>
                             { 
                                 this.props.shareData.map((item, index) => 
                                     <tr id={index} key={index} className="table-row">
                                         <td id="name">{Object.keys(item)}</td>
-                                        <td id="open">{item[Object.keys(item)][0].open}</td>
-                                        <td id="close">{item[Object.keys(item)][0].close}</td>
-                                        <td id="change">{item[Object.keys(item)][0].change}%</td>
+                                        <td id="open">{item[Object.keys(item)][item[Object.keys(item)].length-1].open}</td>
+                                        <td id="close">{item[Object.keys(item)][item[Object.keys(item)].length-1].close}</td>
+                                        <td id="change">{Math.round(item[Object.keys(item)][item[Object.keys(item)].length-1].changePercent*100)/100}%</td>
                                     </tr>
                                 )
                             }
