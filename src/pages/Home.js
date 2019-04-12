@@ -50,7 +50,7 @@ class Home extends Component {
     }
 
     fetchNews(share) {
-        const req = new Request(`https://newsapi.org/v2/everything?language=en&q=${share}&from=2019-03-11&apiKey=87903eb739404351971c2d3106d16e7e`)
+        const req = new Request(`https://newsapi.org/v2/everything?language=en&q=${share}&apiKey=87903eb739404351971c2d3106d16e7e`)
         fetch(req)
             .then((response) => {
                 const data = response.json();
