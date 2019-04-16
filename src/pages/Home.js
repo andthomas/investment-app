@@ -66,7 +66,6 @@ class Home extends Component {
                 }
                 news.unshift(newNews)
                 this.setState({ fetchedNews: news.flat() })
-                console.log(this.state.fetchedNews)
             })
     }
 
