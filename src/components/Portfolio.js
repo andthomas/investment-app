@@ -167,7 +167,8 @@ class Portfolio extends Component {
 }
 
 Portfolio.propTypes = {
-    total: PropTypes.number
+    total: PropTypes.number,
+    shareData: PropTypes.array
 };
 
 export default hot(module)(Portfolio);

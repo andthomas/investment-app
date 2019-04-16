@@ -1,7 +1,6 @@
 "use strict"
 import React, { Component } from "react";
 import "./Home.less";
-import { hot } from "react-hot-loader";
 import { Button } from "grommet";
 import { Route } from 'react-router-dom';
 import Portfolio from "../components/Portfolio.js";
@@ -11,14 +10,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as shareActions from '../actions/shareActions';
+import * as newsActions from '../actions/newsActions';
 
 class Home extends Component {
     constructor(props) {
         super(props)
-        this.state = { currentView: "news",
-                       selectedShares: ['AAPL', 'BIDU'],
-                       fetchedNews: []
-                    }
+        this.state = { 
+            currentView: "invest",
+            selectedShares: ['AAPL', 'BIDU'],
+            fetchedNews: []
+        }
     }
     
     changeView(view) {
@@ -32,41 +33,14 @@ class Home extends Component {
 
     componentDidMount() {
         this.changeView(this.state.currentView)
-        this.getNewsForEachShare()
         this.props.shareActions.fetchShareData(this.state.selectedShares);
-    }
-
-    getNewsForEachShare() {
-        this.setState({fetchedNews: []});
-        this.state.selectedShares.forEach((s) => {
-            this.fetchNews(s);
-        });
+        this.props.newsActions.fetchNewsData(this.state.selectedShares);
     }
     
     updateShareList(selShares) {
         this.setState({selectedShares: selShares})
         this.props.shareActions.fetchShareData(this.state.selectedShares);
-        this.getNewsForEachShare()
-    }
-
-    fetchNews(share) {
-        const req = new Request(`https://newsapi.org/v2/everything?language=en&q=${share}&apiKey=87903eb739404351971c2d3106d16e7e`)
-        fetch(req)
-            .then((response) => {
-                const data = response.json();
-                return data;
-            })
-            .then((data) => {
-                let news = this.state.fetchedNews;
-                let newNews = data.articles;
-                if (newNews.length > 10) {
-                    newNews = newNews.filter((n, i) => {
-                        if (i < 5) return n
-                    })
-                }
-                news.unshift(newNews)
-                this.setState({ fetchedNews: news.flat() })
-            })
+        this.props.newsActions.fetchNewsData(this.state.selectedShares);
     }
 
     render() {
@@ -86,7 +60,7 @@ class Home extends Component {
                 <div className="app-body">
                     {this.state.currentView === "portfolio" ? <Portfolio shareData={this.props.shareData}/> : null}
                     {this.state.currentView === "invest" ? <Invest selectedShares={this.state.selectedShares} onSelectShares={this.updateShareList.bind(this)}/> : null}
-                    {this.state.currentView === "news" ? <News currentNews={this.state.fetchedNews}/> : null}
+                    {this.state.currentView === "news" ? <News currentNews={this.props.newsData}/> : null}
                 </div>
 
                 <div className="bottom-navbar">
@@ -116,7 +90,9 @@ class Home extends Component {
 
 Home.propTypes = {
     shareActions: PropTypes.object,
+    newsActions: PropTypes.object,
     shareData: PropTypes.array,
+    newsData: PropTypes.array,
     currentView: PropTypes.string
 };
 
@@ -124,13 +100,14 @@ Home.propTypes = {
 function mapStateToProps(state) {
     return {
         shareData: state.data.shareData,
-        shareList: state.data.shareList
+        newsData: state.data.newsData
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        shareActions: bindActionCreators(shareActions, dispatch)
+        shareActions: bindActionCreators(shareActions, dispatch),
+        newsActions: bindActionCreators(newsActions, dispatch)
     };
 }
 

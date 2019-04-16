@@ -6,13 +6,11 @@ import thunk from 'redux-thunk';
 
 function configureStore(initialState = {}) {
     const reducer = combineReducers({
-        // auth: () => ({ mock: true }),
         data: persistReducer(
             {
-                key: "data", // key for localStorage key, will be: "persist:form"
+                key: "data",
                 storage,
                 debug: true,
-                blacklist: ['foo'],
             },
             rootReducer
         ),
@@ -28,7 +26,7 @@ function configureStore(initialState = {}) {
     // console.log("initialState", store.getState());
 
     const persistor = persistStore(store, null, () => {
-        // if you want to get restoredState
+        // Fetch restoredState
         // console.log("restoredState", store.getState());
     });
 

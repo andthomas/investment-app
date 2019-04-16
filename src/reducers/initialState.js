@@ -1,3 +1,4 @@
 export default {
-    shareData: []
+    shareData: [],
+    newsData: []
 };
