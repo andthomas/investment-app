@@ -64,9 +64,9 @@ class Home extends Component {
                         if (i < 5) return n
                     })
                 }
-                // console.log(news.length)
                 news.unshift(newNews)
                 this.setState({ fetchedNews: news.flat() })
+                console.log(this.state.fetchedNews)
             })
     }
 
