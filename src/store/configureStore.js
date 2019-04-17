@@ -23,7 +23,7 @@ function configureStore(initialState = {}) {
         whitelist: ['auth'],
     }, reducer), initialState, applyMiddleware(thunk));
 
-    // console.log("initialState", store.getState());
+    console.log("initialState", store.getState());
 
     const persistor = persistStore(store, null, () => {
         // Fetch restoredState

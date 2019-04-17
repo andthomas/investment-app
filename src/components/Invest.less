@@ -33,7 +33,9 @@
         }
         
         .inner-grid {
-            padding: 10px 2px;
+            padding: 9px 2px;
+            height: 20px;
+            position: relative;
             color: black;
             font-size: 13px;
             border-radius: 5px;
@@ -42,6 +44,17 @@
             cursor: pointer;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
             border: 1px solid #ececec;
+
+            img {
+                position: absolute;
+                // height: 40px;
+                // left: -1px;
+                // top: -1px;
+                height: 100%;
+                left: 0px;
+                top: 0px;
+                border-radius: 5px 0px 0px 5px;
+            }
         }
     }
 }

@@ -96,7 +96,6 @@ Home.propTypes = {
     currentView: PropTypes.string
 };
 
-
 function mapStateToProps(state) {
     return {
         shareData: state.data.shareData,
