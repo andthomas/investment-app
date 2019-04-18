@@ -12,6 +12,11 @@
         margin: 30px 0px;
         grid-column-gap: 10px;
         grid-row-gap: 10px;
+        -webkit-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        -o-user-select: none;
+        user-select: none;
         
         input {
             height: 35px;
@@ -44,13 +49,18 @@
             border: 1px solid #ececec;
             display: flex;
             align-items: center;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: box-shadow 0.2s ease-in-out;
+            -webkit-user-select: none; 
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            -o-user-select: none;
+            user-select: none;
 
             img {
                 position: absolute;
                 height: 100%;
-                left: -1px;
-                top: -1px;
+                left: 0px;
+                top: 0px;
                 border-radius: 5px 0px 0px 5px;
             }
 
