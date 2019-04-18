@@ -16,26 +16,26 @@ class Invest extends Component {
         let newShare = true
         this.props.selectedShares.forEach( (s, index) => {
             if (share === s) {
-                this.props.selectedShares.splice(index, 1)
-                newShare = false
+                this.props.selectedShares.splice(index, 1);
+                newShare = false;
             }
         })
         if (newShare) {
             if (this.props.selectedShares.length == 5) return;
-            this.props.selectedShares.push(share)
+            this.props.selectedShares.push(share);
         }
-        this.props.onSelectShares(this.props.selectedShares)
+        this.props.onSelectShares(this.props.selectedShares);
     }
 
     highlightSelectedButtons() {
         const shareButtons = Array.from(document.getElementsByClassName('inner-grid'))
         let that = this;
         shareButtons.forEach((s) => {
-            s.style.color = "black"
+            s.style.boxShadow = "5px 5px 5px rgba(0,0,0,0.2)"
 
             that.props.selectedShares.forEach((ss, i) => {
                 if (s.id === ss) {
-                    document.getElementById(ss).style.color = '#03CEA4'
+                    document.getElementById(ss).style.boxShadow = '5px 5px 5px rgba(0,153,121,1)'
                 };
             })
         })
@@ -71,7 +71,6 @@ class Invest extends Component {
                     ></input>
                     {
                         this.state.visibleShares.map( (share) => {
-                            console.log(share)
                             return (
                                 <div 
                                     className="inner-grid" 
@@ -79,7 +78,10 @@ class Invest extends Component {
                                     onClick={() => {this.onItemClick(share.id)}}
                                     key={share.id}>
                                     <img src={this.imgUrl(share.icon)} />
-                                        {share.name} ({share.id})
+                                        <div>
+                                            <p><strong>{share.id}</strong></p>
+                                            <p>{share.name}</p>
+                                        </div>
                                 </div>
                                 )
                         })
