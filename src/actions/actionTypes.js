@@ -1,4 +1,7 @@
+// Share actions
 export const FETCH_SHARE_DATA = 'FETCH_SHARE_DATA';
 export const RECEIVE_SHARE_DATA = 'RECEIVE_SHARE_DATA';
+export const SET_SELECTED_SHARES = 'SET_SELECTED_SHARES';
+// News actions
 export const FETCH_NEWS_DATA = 'FETCH_NEWS_DATA';
 export const RECEIVE_NEWS_DATA = 'RECEIVE_NEWS_DATA';
