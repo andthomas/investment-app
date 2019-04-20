@@ -8,7 +8,7 @@ class Invest extends Component {
         super(props);
         this.state = {
             value: 0,
-            visibleShares: [],
+            visibleShares: []
         }
     }
 
@@ -48,10 +48,14 @@ class Invest extends Component {
         this.setState({visibleShares: results})
     }
 
+    clearFilter() {
+        document.getElementById('searchbar').value = '';
+        this.filterShares('');
+    }
+
     componentDidMount() {
         this.setState({visibleShares: this.props.shareList});
         this.highlightSelectedButtons()
-        console.log(this.props)
     }
     
     componentDidUpdate() {
@@ -66,7 +70,11 @@ class Invest extends Component {
         return (
             <div className="invest-container">
                 <div className="grid">
+                    <i className="fas fa-times"
+                        onClick={() => { this.clearFilter()}}>
+                    </i>
                     <input
+                        id="searchbar"
                         placeholder="Filter NASDAQ"
                         onChange={event => this.filterShares(event.target.value)}
                     ></input>
