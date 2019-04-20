@@ -24,11 +24,11 @@ class Home extends Component {
     
     changeView(view) {
         this.setState({ currentView: view });
-        const classes = Array.from(document.getElementsByClassName('nav-item'))
+        const classes = Array.from(document.getElementsByClassName('nav-button'))
         classes.forEach( (c) => {
-            c.style.borderBottom = "0px";
+            c.style.color = "#d6d6d6";
         })
-        document.getElementById(view).style.borderBottom = '3px solid white';
+        document.getElementById(view).style.color = '#001b4a';
     }
 
     componentDidMount() {
@@ -65,22 +65,19 @@ class Home extends Component {
 
                 <div className="bottom-navbar">
                     <div
-                        id="news"
                         onClick={ () => this.changeView('news') } 
                         className={`nav-item`}>
-                        <i className="fas fa-newspaper"></i>
+                        <i id="news" className="fas fa-newspaper nav-button"></i>
                     </div>
                     <div
-                        id="portfolio"
                         onClick={ () => this.changeView('portfolio') }
                         className="nav-item">
-                        <i className="fa fa-chart-bar"></i>
+                        <i id="portfolio" className="fa fa-chart-bar nav-button"></i>
                     </div>
-                    <div
-                        id="invest"
+                    <div  
                         onClick={ () => this.changeView('invest') }
                         className="nav-item">
-                        <i className="fas fa-clipboard-list"></i>
+                        <i id="invest" className="fas fa-clipboard-list nav-button"></i>
                     </div>
                 </div>
             </div>
