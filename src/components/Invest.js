@@ -51,6 +51,7 @@ class Invest extends Component {
     componentDidMount() {
         this.setState({visibleShares: this.props.shareList});
         this.highlightSelectedButtons()
+        console.log(this.props)
     }
     
     componentDidUpdate() {
@@ -79,8 +80,8 @@ class Invest extends Component {
                                     key={share.id}>
                                     <img src={this.imgUrl(share.icon)} />
                                         <div>
-                                            <p><strong>{share.id}</strong></p>
-                                            <p>{share.name}</p>
+                                        <p><strong className="share-id">{share.id}</strong></p>
+                                            <p className="share-name">{share.name}</p>
                                         </div>
                                 </div>
                                 )

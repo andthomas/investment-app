@@ -1,12 +1,13 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
-import News from './News';
+import News from '../components/News';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
+
 describe('News component test', () => {
-    it('Renders news item without crashing', () => {
-        const newsItems =
+    it('Renders a news item without crashing', () => {
+        const newsItem =
             [
                 {
                     "author": "Test author", 
@@ -17,7 +18,7 @@ describe('News component test', () => {
                 } 
             ];
         const wrapper = shallow(
-            <News currentNews={ newsItems }/>
+            <News currentNews={ newsItem }/>
         );
         expect(wrapper.find('.news-title').text('Test title'));
         expect(wrapper.find('.news-subtitle').text('Test subtitle'));
