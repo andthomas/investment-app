@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1555992774284" clover="3.2.0">
+  <project timestamp="1555992774284" name="All files">
+    <metrics statements="38" coveredstatements="20" conditionals="10" coveredconditionals="2" methods="21" coveredmethods="13" elements="69" coveredelements="35" complexity="0" loc="38" ncloc="38" packages="1" files="2" classes="2"/>
+    <file name="Invest.js" path="/Users/Dov1/react-projects/investment-app/src/components/Invest.js">
+      <metrics statements="34" coveredstatements="16" conditionals="10" coveredconditionals="2" methods="18" coveredmethods="10"/>
+      <line num="9" count="3" type="stmt"/>
+      <line num="10" count="3" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="28" count="0" type="stmt"/>
+      <line num="32" count="7" type="stmt"/>
+      <line num="33" count="7" type="stmt"/>
+      <line num="34" count="7" type="stmt"/>
+      <line num="35" count="0" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="39" count="0" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="53" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="58" count="3" type="stmt"/>
+      <line num="59" count="3" type="stmt"/>
+      <line num="63" count="4" type="stmt"/>
+      <line num="67" count="7" type="stmt"/>
+      <line num="71" count="7" type="stmt"/>
+      <line num="75" count="0" type="stmt"/>
+      <line num="80" count="1" type="stmt"/>
+      <line num="84" count="7" type="stmt"/>
+      <line num="88" count="0" type="stmt"/>
+      <line num="106" count="1" type="stmt"/>
+      <line num="112" count="0" type="stmt"/>
+    </file>
+    <file name="News.js" path="/Users/Dov1/react-projects/investment-app/src/components/News.js">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

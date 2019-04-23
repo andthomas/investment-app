@@ -3,7 +3,8 @@ import "./Invest.less";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-class Invest extends Component {
+// Export unconnected Invest component to allow unit test (without store)
+export class Invest extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +13,7 @@ class Invest extends Component {
         }
     }
 
-    onItemClick(share) {
+    addToSelectedShares(share) {
         let newShare = true
         this.props.selectedShares.forEach( (s, index) => {
             if (share === s) {
@@ -33,7 +34,7 @@ class Invest extends Component {
         shareButtons.forEach((s) => {
             s.style.boxShadow = "5px 5px 5px rgba(0,0,0,0.2)"
 
-            that.props.selectedShares.forEach((ss, i) => {
+            that.props.selectedShares.forEach((ss) => {
                 if (s.id === ss) {
                     document.getElementById(ss).style.boxShadow = '5px 5px 5px rgba(0,153,121,1)'
                 };
@@ -84,9 +85,9 @@ class Invest extends Component {
                                 <div 
                                     className="inner-grid" 
                                     id={share.id}
-                                    onClick={() => {this.onItemClick(share.id)}}
+                                    onClick={() => {this.addToSelectedShares(share.id)}}
                                     key={share.id}>
-                                    <img src={this.imgUrl(share.icon)} />
+                                    <img className="company-logo" src={this.imgUrl(share.icon)} />
                                         <div>
                                         <p><strong className="share-id">{share.id}</strong></p>
                                             <p className="share-name">{share.name}</p>
@@ -113,6 +114,7 @@ function mapStateToProps(state) {
     };
 }
 
+// Default export connect Invest component (with store)
 export default connect(
     mapStateToProps
 )(Invest);
