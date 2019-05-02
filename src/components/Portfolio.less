@@ -38,60 +38,57 @@
     .table-container {
         font-weight: 300;
         margin-bottom: 40px;
+        font-family: 'Playfair Display', serif;
 
-        table {
+        .share-details {
             width: 100%;
-            border-color: #fff;
-
-            .table-head {
-                margin-bottom: 8px;
-                font-weight: 400;
-                :nth-child(2) {
-                    text-align: center;
-                }
-                :nth-child(3) {
-                    text-align: center;
-                }
-                :nth-child(4) {
-                    text-align: right;
-                }
-            }
-            .table-row {
-                font-weight: 300;
-                :nth-child(1) {
-                    text-transform: uppercase;
-                }
-                :nth-child(2) {
-                    text-align: center;
-                }
-                :nth-child(3) {
-                    text-align: center;
-                }
-                :nth-child(4) {
-                    text-align: right;
-                }
-
-            }
-
-            tr:nth-child(2) {
-                color: #3F88C5;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            border: 1px solid #ececec;
+            border-radius: 5px;
+            
+            .color-bar {
+                width: 10px;
+                border-radius: 5px 0px 0px 5px;
             }
             
-            tr:nth-child(3) {
-                color: #FFBA08;
-            }
+            .content-container {
+                width: calc(100% - 10px);
+                padding: 10px 10px;
 
-            tr:nth-child(4) {
-                color: #06D6A0;
-            }
+                p {
+                    margin: 0px;
+                    font-size: 14px;
+                }
+                
+                .price-details {
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
 
-            tr:nth-child(5) {
-                color: #28AFB0;
+                    p:nth-child(1) {
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                }
             }
-
-            tr:nth-child(6) {
-                color: #D000000;
-            }
+        }
+        .share-details:nth-child(1)>.color-bar {
+            background-color: #3F88C5;
+        }
+        .share-details:nth-child(2)>.color-bar {
+            background-color: #FFBA08;
+        }
+        .share-details:nth-child(3)>.color-bar {
+            background-color: #06D6A0;
+        }
+        .share-details:nth-child(4)>.color-bar {
+            background-color: #28AFB0;
+        }
+        .share-details:nth-child(4)>.color-bar {
+            background-color: #D000000;
         }
     }
 }

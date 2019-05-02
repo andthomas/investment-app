@@ -140,26 +140,39 @@ class Portfolio extends Component {
                 </div>
 
                 <div className="table-container">
-                    <table>
-                        <tbody>
-                            <tr className="table-head">
-                                <td>Share</td>
-                                <td>Open</td>
-                                <td>Current</td>
-                                <td>Change</td>
-                            </tr>
-                            { 
-                                this.props.shareData.map((item, index) => 
-                                    <tr id={index} key={index} className="table-row">
-                                        <td id="name">{Object.keys(item)}</td>
-                                        <td id="open">{item[Object.keys(item)][item[Object.keys(item)].length-1].open}</td>
-                                        <td id="close">{item[Object.keys(item)][item[Object.keys(item)].length-1].close}</td>
-                                        <td id="change">{Math.round(item[Object.keys(item)][item[Object.keys(item)].length-1].changePercent*100)/100}%</td>
-                                    </tr>
-                                )
-                            }
-                        </tbody>
-                    </table>
+                    {
+                        this.props.shareData.map((item, index) => 
+                            <div className="share-details" key={index}>
+                                <div className="color-bar">
+                                </div>
+                                <div className="content-container">
+                                    <p className="name">{Object.keys(item)}</p>
+                                    <div className="price-details">
+                                        <div>
+                                            <p>Open</p>
+                                            <p>{item[Object.keys(item)][item[Object.keys(item)].length - 1].open}</p>
+                                        </div>
+                                        <div>
+                                            <p>High</p>
+                                            <p>{item[Object.keys(item)][item[Object.keys(item)].length - 1].high}</p>
+                                        </div>
+                                        <div>
+                                            <p>Low</p>
+                                            <p>{item[Object.keys(item)][item[Object.keys(item)].length - 1].low}</p>
+                                        </div>
+                                        <div>
+                                            <p>Current</p>
+                                            <p>{item[Object.keys(item)][item[Object.keys(item)].length - 1].close}</p>
+                                        </div>
+                                        <div>
+                                            <p>Change</p>
+                                            <p>{Math.round(item[Object.keys(item)][item[Object.keys(item)].length - 1].changePercent * 100) / 100}%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         )
