@@ -27,7 +27,7 @@ function configureStore(initialState = {}) {
 
     const persistor = persistStore(store, null, () => {
         // Fetch restoredState
-        // console.log("restoredState", store.getState());
+        console.log("restoredState", store.getState());
     });
 
     return { store, persistor };
