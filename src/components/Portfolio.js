@@ -5,15 +5,14 @@ import { Meter } from "grommet";
 import Chart from "chart.js";
 import PropTypes from 'prop-types';
 
-const randomColor = require('randomcolor')
-
 class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
             total: 0,
             movement: 0,
-            colorList: ['#3F88C5', '#FFBA08', '#06D6A0', '#28AFB0', '#432534', '#D00000']
+            colorList: ['#3F88C5', '#FFBA08', '#06D6A0', '#28AFB0', '#432534', '#D00000'],
+            circleColor: 'rgb(3, 206, 164)'
         }
     }
 
@@ -47,6 +46,8 @@ class Portfolio extends Component {
     
     componentDidMount() {
         this.calculateMovement();
+
+        this.setState({ circleColor: (this.state.movement > 0 ? 'rgb(3, 206, 164)' : '#f00')});
 
         let that = this;
         let i = 0
@@ -120,7 +121,7 @@ class Portfolio extends Component {
                         className="meter"
                         values={[{
                             value: this.state.total,
-                            color: 'rgb(3, 206, 164)',
+                            color: this.state.circleColor,
                             label: 'sixty',
                             onClick: () => { }
                         }]}
