@@ -6,7 +6,6 @@ The project also uses:
 - React router
 - Redux
 - ChartJS
-- GrommetUI
 - Jest && Enzyme
 - redux-persist && redux-thunk
 - webpack-pwa-manifest
