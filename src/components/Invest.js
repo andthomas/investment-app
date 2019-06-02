@@ -16,7 +16,8 @@ export class Invest extends Component {
     addToSelectedShares(share) {
         let newShare = true
         this.props.selectedShares.forEach( (s, index) => {
-            if (share === s) {
+            // Remove double clicked shares if there is more than one left
+            if (share === s && this.props.selectedShares.length > 1) {
                 this.props.selectedShares.splice(index, 1);
                 newShare = false;
             }
@@ -43,7 +44,7 @@ export class Invest extends Component {
     }
 
     filterShares(e) {
-        const results = this.props.shareList.filter((s, i) => {
+        const results = this.props.shareList.filter((s) => {
             if (s.name.toLowerCase().includes(e.toLowerCase())) return s;
         })
         this.setState({visibleShares: results})
