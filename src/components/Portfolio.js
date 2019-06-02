@@ -23,13 +23,12 @@ class Portfolio extends Component {
             return [open, close]
         })
 
-
         let openTotal = 0;
         let closeTotal = 0;
         openCloseData.forEach((s) => {
             openTotal = openTotal + s[0]
             closeTotal = closeTotal + s[1]
-        })
+        });
 
         let indMov = closeTotal / openTotal;
         let c;
@@ -38,16 +37,14 @@ class Portfolio extends Component {
         } else {
             c = Math.round((indMov - 1) * 10000) / 100;
         }
+        this.setState({ circleColor: (c > 0 ? 'rgb(3, 206, 164)' : '#f00')});
 
-        if (c > 0) c = `+${c}`
-        this.setState({movement: c})
-
+        if (c > 0) c = `+${c}`;
+        this.setState({movement: c});
     }
     
     componentDidMount() {
         this.calculateMovement();
-
-        this.setState({ circleColor: (this.state.movement > 0 ? 'rgb(3, 206, 164)' : '#f00')});
 
         let that = this;
         let i = 0
@@ -122,8 +119,7 @@ class Portfolio extends Component {
                         values={[{
                             value: this.state.total,
                             color: this.state.circleColor,
-                            label: 'sixty',
-                            onClick: () => { }
+                            label: 'sixty'
                         }]}
                         thickness='small'
                         type="circle"
