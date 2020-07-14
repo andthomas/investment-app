@@ -16,7 +16,7 @@ class News extends Component {
                             <div
                                 key={key}>
                                 <div className={`news-tile`}>
-                                    <img className={`news-item`} src={item.urlToImage}/>
+                                    <img className={`news-item`} src={item.image}/>
                                     <div className={`news-title`}>{item.title}</div>
                                     <div className={`news-subtitle`}>{item.source.name}</div>
                                     <div className={`news-description`}>{item.description}</div>

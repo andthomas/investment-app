@@ -8,12 +8,13 @@ export function fetchNewsData(shareIds) {
     return (dispatch) => {
         let newsStories = []
         shareIds.map((share) => {
-            fetch(`https://newsapi.org/v2/everything?language=en&q=${share}&apiKey=87903eb739404351971c2d3106d16e7e`)
+            fetch(`https://gnews.io/api/v3/search?q=${share}&token=b22571f29ed9177645da544c3f32c5bd`)
                 .then((response) => {
                     const data = response.json();
                     return data;
                 })
                 .then((data) => {
+                    console.log(data)
                     data.articles.map((n, i) => {
                         if (i < 5) newsStories.push(n);
                     })
